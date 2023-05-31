@@ -6,7 +6,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 let inMemoreQuestionRepository: InMemoryQuestionsRepository
 let sut: DeleteQuestionUseCase
 
-describe('Delete Question Slug', () => {
+describe('Delete Question', () => {
   beforeEach(() => {
     inMemoreQuestionRepository = new InMemoryQuestionsRepository()
     sut = new DeleteQuestionUseCase(inMemoreQuestionRepository)

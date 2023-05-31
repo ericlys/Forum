@@ -5,11 +5,9 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
   public itens: Question[] = []
 
   async findById(id: string) {
-    const questions = this.itens.find(
-      (question) => question.id.toString() === id,
-    )
+    const question = this.itens.find((item) => item.id.toString() === id)
 
-    return questions ?? null
+    return question ?? null
   }
 
   async create(question: Question) {
