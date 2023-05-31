@@ -3,13 +3,13 @@ import { makeQuestion } from 'test/factories/make-question'
 import { EditQuestionUseCase } from './edit-question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
-let inMemoreQuestionRepository: InMemoryQuestionsRepository
+let inMemoryQuestionRepository: InMemoryQuestionsRepository
 let sut: EditQuestionUseCase
 
 describe('Edit Question', () => {
   beforeEach(() => {
-    inMemoreQuestionRepository = new InMemoryQuestionsRepository()
-    sut = new EditQuestionUseCase(inMemoreQuestionRepository)
+    inMemoryQuestionRepository = new InMemoryQuestionsRepository()
+    sut = new EditQuestionUseCase(inMemoryQuestionRepository)
   })
 
   it('should be able to edit a question', async () => {
@@ -19,7 +19,7 @@ describe('Edit Question', () => {
       },
       new UniqueEntityID('question-1'),
     )
-    await inMemoreQuestionRepository.create(newQuestion)
+    await inMemoryQuestionRepository.create(newQuestion)
 
     await sut.execute({
       questionId: newQuestion.id.toValue(),
@@ -28,7 +28,7 @@ describe('Edit Question', () => {
       content: 'Conteúdo teste',
     })
 
-    expect(inMemoreQuestionRepository.itens[0]).toMatchObject({
+    expect(inMemoryQuestionRepository.itens[0]).toMatchObject({
       title: 'Pergunta teste',
       content: 'Conteúdo teste',
     })
@@ -41,7 +41,7 @@ describe('Edit Question', () => {
       },
       new UniqueEntityID('question-1'),
     )
-    await inMemoreQuestionRepository.create(newQuestion)
+    await inMemoryQuestionRepository.create(newQuestion)
 
     expect(() => {
       return sut.execute({
