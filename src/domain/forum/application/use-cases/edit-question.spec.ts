@@ -28,7 +28,7 @@ describe('Edit Question', () => {
       content: 'Conteúdo teste',
     })
 
-    expect(inMemoryQuestionRepository.itens[0]).toMatchObject({
+    expect(inMemoryQuestionRepository.items[0]).toMatchObject({
       title: 'Pergunta teste',
       content: 'Conteúdo teste',
     })

@@ -27,7 +27,7 @@ describe('Edit Answer', () => {
       content: 'Conteúdo teste',
     })
 
-    expect(inMemoryAnswerRepository.itens[0]).toMatchObject({
+    expect(inMemoryAnswerRepository.items[0]).toMatchObject({
       content: 'Conteúdo teste',
     })
   })

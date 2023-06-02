@@ -3,16 +3,16 @@ import { AnswersRepository } from '@/domain/forum/application/repositories/answe
 import { Answer } from '@/domain/forum/enterprise/entities/answer'
 
 export class InMemoryAnswersRepository implements AnswersRepository {
-  public itens: Answer[] = []
+  public items: Answer[] = []
 
   async findById(id: string) {
-    const answer = this.itens.find((question) => question.id.toString() === id)
+    const answer = this.items.find((question) => question.id.toString() === id)
 
     return answer ?? null
   }
 
   async findManyByQuestionId(questionId: string, { page }: PaginationParams) {
-    const answers = this.itens
+    const answers = this.items
       .filter((item) => item.questionId.toString() === questionId)
       .slice((page - 1) * 20, page * 20)
 
@@ -20,18 +20,18 @@ export class InMemoryAnswersRepository implements AnswersRepository {
   }
 
   async create(answer: Answer) {
-    this.itens.push(answer)
+    this.items.push(answer)
   }
 
   async save(answer: Answer) {
-    const itemIndex = this.itens.findIndex((item) => item.id === answer.id)
+    const itemIndex = this.items.findIndex((item) => item.id === answer.id)
 
-    this.itens[itemIndex] = answer
+    this.items[itemIndex] = answer
   }
 
   async delete(answer: Answer) {
-    const itemIndex = this.itens.findIndex((item) => item.id === answer.id)
+    const itemIndex = this.items.findIndex((item) => item.id === answer.id)
 
-    this.itens.splice(itemIndex, 1)
+    this.items.splice(itemIndex, 1)
   }
 }

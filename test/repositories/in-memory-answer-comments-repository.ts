@@ -4,9 +4,9 @@ import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment
 export class InMemoryAnswerCommentsRepository
   implements AnswerCommentsRepository
 {
-  public itens: AnswerComment[] = []
+  public items: AnswerComment[] = []
 
   async create(answerComment: AnswerComment) {
-    this.itens.push(answerComment)
+    this.items.push(answerComment)
   }
 }

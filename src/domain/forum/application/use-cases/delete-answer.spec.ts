@@ -26,7 +26,7 @@ describe('Delete Answer', () => {
       authorId: 'author-1',
     })
 
-    expect(inMemoryAnswerRepository.itens).toHaveLength(0)
+    expect(inMemoryAnswerRepository.items).toHaveLength(0)
   })
 
   it('should not be able to delete a answer from another user', async () => {

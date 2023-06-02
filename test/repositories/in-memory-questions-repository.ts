@@ -3,22 +3,22 @@ import { QuestionsRepository } from '@/domain/forum/application/repositories/que
 import { Question } from '@/domain/forum/enterprise/entities/question'
 
 export class InMemoryQuestionsRepository implements QuestionsRepository {
-  public itens: Question[] = []
+  public items: Question[] = []
 
   async findById(id: string) {
-    const question = this.itens.find((item) => item.id.toString() === id)
+    const question = this.items.find((item) => item.id.toString() === id)
 
     return question ?? null
   }
 
   async save(question: Question) {
-    const itemIndex = this.itens.findIndex((item) => item.id === question.id)
+    const itemIndex = this.items.findIndex((item) => item.id === question.id)
 
-    this.itens[itemIndex] = question
+    this.items[itemIndex] = question
   }
 
   async findManyRecent({ page }: PaginationParams) {
-    const questions = this.itens
+    const questions = this.items
       .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
       .slice((page - 1) * 20, page * 20)
 
@@ -26,17 +26,17 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
   }
 
   async create(question: Question) {
-    this.itens.push(question)
+    this.items.push(question)
   }
 
   async findBySlug(slug: string) {
-    const question = this.itens.find((question) => question.slug.value === slug)
+    const question = this.items.find((question) => question.slug.value === slug)
     return question ?? null
   }
 
   async delete(question: Question) {
-    const itemIndex = this.itens.findIndex((item) => item.id === question.id)
+    const itemIndex = this.items.findIndex((item) => item.id === question.id)
 
-    this.itens.splice(itemIndex, 1)
+    this.items.splice(itemIndex, 1)
   }
 }

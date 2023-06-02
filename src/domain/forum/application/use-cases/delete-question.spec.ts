@@ -26,7 +26,7 @@ describe('Delete Question', () => {
       authorId: 'author-1',
     })
 
-    expect(inMemoryQuestionRepository.itens).toHaveLength(0)
+    expect(inMemoryQuestionRepository.items).toHaveLength(0)
   })
 
   it('should not be able to delete a question from another user', async () => {
