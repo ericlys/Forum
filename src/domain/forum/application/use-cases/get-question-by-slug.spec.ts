@@ -29,10 +29,16 @@ describe('Get Question By Slug', () => {
       slug: 'example-question',
     })
 
-    expect(result.isRight()).toBe(true)
+    // expect(result.isRight()).toBe(true)
 
-    if (result.isRight()) {
-      expect(result.value.question.title).toEqual(newQuestion.title)
-    }
+    // if (result.isRight()) {
+    //   expect(result.value.question.title).toEqual(newQuestion.title)
+    // }
+
+    expect(result.value).toMatchObject({
+      question: expect.objectContaining({
+        title: newQuestion.title,
+      }),
+    })
   })
 })
